@@ -1,0 +1,164 @@
+
+:root{
+    --bcolor: linear-gradient(#34373c96 0%,#34373ccb 45%,#000000 55%,#2c2f36 100%);
+    --bcorange: linear-gradient(#f78000 0%,#f78000 45%,#000000 55%,#382d0f 100%);
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* @keyframes moving {
+    from {top: 12px;}
+    to {top:-12px;}
+  } */
+
+
+@font-face {
+    font-family: brandFont;
+    src: url("tangerine.ttf");
+  }
+
+  @font-face {
+    font-family: calcFont;
+    src: url("digital-7.ttf");
+  }
+
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #67696e;
+    box-shadow: inset 0px 0px 100px black;
+}
+
+p{
+    display: inline-block;
+    font-family: brandFont;
+    color: rgb(179, 171, 153);
+    font-size: 33px;
+    position: relative;
+    text-align: center;
+    padding-bottom: 10px;
+    position: absolute;
+    top: 12px;
+    left: 84px;
+    font-style: italic;
+}
+
+#calc{
+    background: url("vertical_cloth.png");
+    border-radius: 11px;
+    width: 250px;
+    height: auto;
+    border: 1px solid rgba(138, 138, 138, 0.747);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.253);
+    padding: 45px 20px 25px 20px;
+    position: relative;
+    -webkit-border-radius: 11px;
+    -moz-border-radius: 11px;
+    -ms-border-radius: 11px;
+    -o-border-radius: 11px;
+}
+
+#calc div::after {
+    content: '';
+    height: 358px;
+    width: 250px;
+    background: url(vertical_cloth.png);
+    border-radius: 5px;
+    border: 1px solid #567;
+    padding: 8px;
+    filter: blur(20px);
+    position: absolute;
+    z-index: -1;
+    top: -10px;
+    left: -10px;
+  }
+
+  #calc div::before {
+    content: '_____';
+    height: 38px;
+    width: 182px;
+    font-size: 57px;
+    color: #e7e6e649;
+    padding: 8px;
+    position: absolute;
+    z-index: 1;
+    top: 2px;
+    left: 34px;
+    animation: moving 5s infinite;
+    -webkit-animation: moving 5s infinite;
+}
+
+
+
+input{
+    background: linear-gradient(#f7f7f7 0%,#ffffff 45%,#efefef 55%,#ffffffa1 100%);
+    font-family: calcFont;
+    outline: none;
+    border: 1px solid #556677;
+    border-radius: 5px;
+    display: inline-block;
+    width: 196px;
+    padding: 6px;
+    margin: 6px;
+    font-size: 28px;
+}
+
+
+span{
+    font-family: calcFont;
+    border: 1px solid black;
+    border-top: 2px solid black;
+    background: var(--bcolor);
+    box-shadow: 0px 1px rgb(107, 106, 106);
+    border-radius: 5px;
+    user-select: none;
+    line-height: 40px;
+    text-align: center;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #777;
+    color: white;
+    margin: 6px;
+    cursor: pointer;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+ 
+span:active{
+    transform:scale(0.97);
+    transition: .1s;
+    -webkit-transition: .1s;
+    -moz-transition: .1s;
+    -ms-transition: .1s;
+    -o-transition: .1s;
+    -webkit-transform:scale(0.97);
+    -moz-transform:scale(0.97);
+    -ms-transform:scale(0.97);
+    -o-transform:scale(0.97);
+    color: #ffbb00
+}
+
+span:nth-child(-n+4), span:nth-child(4n+4),span:nth-child(18){
+    font-family: monospace;
+    color: #bba98c;
+    font-weight: bold;
+}
+
+span:nth-child(16){
+    color: #fff;
+}
+
+.negative::before{
+content:"-";
+}

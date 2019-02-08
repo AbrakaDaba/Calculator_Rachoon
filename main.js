@@ -23,18 +23,9 @@ $(document.body).append(calc);
 
 $(brand).text("Rachoon");
 
-symbols.forEach(function (el) {
-    console.log(typeof (el));
-    if (typeof (el) !== "number") {
-        console.log(el);
-
-    }
-})
-
 // making calculator buttons
 for (i = 0; i < s; i++) {
     var numKey = document.createElement("span");
-    console.log(numKey);
     numKey.innerText = symbols[i];
     numeric.append(numKey);
     if (numKey.innerText == "=") {
@@ -50,11 +41,6 @@ for (i = 0; i < s; i++) {
             "width": "92px"
         });
     };
-    if (typeof ($(numKey).text()) !== "number") {
-        console.log($(numKey), typeof(($(numKey).text()*0)));
-
-    }
-
 }
 
 $("span").click(calculation);
@@ -64,10 +50,14 @@ $("span").click(calculation);
 function calculation() {
     display += $(this).text();
     $(input).val(display);
-
-    if (typeof ($(this).text()) !== "number") {
-        console.log(typeof (($(this).text())));
-
+    // if there is some mark typed, it can be typed again. No other mark can be typed after mark, only after number.
+    if ($(this).text() == "." || $(this).text() == "+" || $(this).text() == "-" || $(this).text() == "*" || $(this).text() == "/") {
+        if (Number.isInteger(parseInt(display[display.length - 2]))) {
+            $(input).val(display);
+        } else {
+            display = display.slice(0, (display.length - 2));
+            $(input).val(display + $(this).text());
+        }
     }
 
     // "=" button functionality
@@ -83,11 +73,16 @@ function calculation() {
         $(input).val(display);
     }
 
-       // "C" button functionality
-       if ($(this).text() == "+/-") {
+    // "+/-" button functionality
+    if ($(this).text() == "+/-") {
         display = display.slice(0, (display.length - 3));
-        $(input).addClass("negative");
-        $(input).val(display);
+        if (display[0] == "-") {
+            display = display.slice(1);
+            $(input).val(display);
+        } else {
+            display = "-" + display;
+            $(input).val(display);
+        }
     }
 
 }

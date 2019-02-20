@@ -1,5 +1,3 @@
-
-
 var symbols = ["c", "+/-", "/", "*", 7, 8, 9, "-", 4, 5, 6, "+", 1, 2, 3, "=", 0, "."]
 var display = "";
 var s = symbols.length;
@@ -45,8 +43,9 @@ $("span").click(calculation);
 function calculation() {
     display += $(this).text();
     $(input).val(display);
+
     // if there is some mark typed, it can be typed again. No other mark can be typed after mark, only after number.
-     if ($(this).text() == "=" ||$(this).text() == "." || $(this).text() == "+" || $(this).text() == "-" || $(this).text() == "*" || $(this).text() == "/") {
+    if ($(this).text() == "=" ||$(this).text() == "." || $(this).text() == "+" || $(this).text() == "-" || $(this).text() == "*" || $(this).text() == "/") {
         if (Number.isInteger(parseInt(display[display.length - 2]))) {
             $(input).val(display);
         } else {

@@ -1,9 +1,4 @@
-// console.log($("#para"));
 
-// $("#btn1").click(function(){
-//     $("#para").text("content").toggle();  
-
-// });
 
 var symbols = ["c", "+/-", "/", "*", 7, 8, 9, "-", 4, 5, 6, "+", 1, 2, 3, "=", 0, "."]
 var display = "";
@@ -51,12 +46,12 @@ function calculation() {
     display += $(this).text();
     $(input).val(display);
     // if there is some mark typed, it can be typed again. No other mark can be typed after mark, only after number.
-    if ($(this).text() == "." || $(this).text() == "+" || $(this).text() == "-" || $(this).text() == "*" || $(this).text() == "/") {
+     if ($(this).text() == "=" ||$(this).text() == "." || $(this).text() == "+" || $(this).text() == "-" || $(this).text() == "*" || $(this).text() == "/") {
         if (Number.isInteger(parseInt(display[display.length - 2]))) {
             $(input).val(display);
         } else {
             display = display.slice(0, (display.length - 2));
-            $(input).val(display + $(this).text());
+            $(input).val(display += $(this).text());
         }
     }
 

@@ -107,6 +107,7 @@ input{
     padding: 6px;
     margin: 6px;
     font-size: 28px;
+    min-height: 44px;
 }
 
 

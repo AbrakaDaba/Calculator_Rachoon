@@ -1,3 +1,4 @@
+ 
 var symbols = ["c", "+/-", "/", "*", 7, 8, 9, "-", 4, 5, 6, "+", 1, 2, 3, "=", 0, "."]
 var display = "";
 var s = symbols.length;
@@ -5,6 +6,7 @@ var s = symbols.length;
 var calc = $('<div>', {
     id: "calc"
 }).appendTo('body');
+
 var numeric = document.createElement("DIV");
 var input = document.createElement("INPUT");
 var brand = document.createElement("p");
@@ -42,10 +44,11 @@ $("span").click(calculation);
 
 function calculation() {
     display += $(this).text();
-    $(input).val(display);
-
-    // if there is some mark typed, it can be typed again. No other mark can be typed after mark, only after number.
-    if ($(this).text() == "=" ||$(this).text() == "." || $(this).text() == "+" || $(this).text() == "-" || $(this).text() == "*" || $(this).text() == "/") {
+   // $(input).val(display);
+    
+   
+   // if there is some mark typed, it can be typed again. No other mark can be typed after mark, only after number.
+   if ($(this).text() == "=" ||$(this).text() == "." || $(this).text() == "+" || $(this).text() == "-" || $(this).text() == "*" || $(this).text() == "/") {
         if (Number.isInteger(parseInt(display[display.length - 2]))) {
             $(input).val(display);
         } else {
@@ -53,20 +56,25 @@ function calculation() {
             $(input).val(display += $(this).text());
         }
     }
-
+    
     // "=" button functionality
     if ($(this).text() == "=") {
+        if(display[0] == "="){  //cannot start with "="
+            display = "";
+            $(input).val(display);
+        }else{ 
         display = display.slice(0, (display.length - 1));
         display = eval(display);
         $(input).val(eval(display));
+        }
     }
-
+    
     // "C" button functionality
     if ($(this).text() == "c") {
         display = display.slice(0, (display.length - 2));
         $(input).val(display);
     }
-
+    
     // "+/-" button functionality
     if ($(this).text() == "+/-") {
         display = display.slice(0, (display.length - 3));
@@ -78,5 +86,13 @@ function calculation() {
             $(input).val(display);
         }
     }
-
+    
+    //you have to start with number or "-" or"+""
+    if (display.startsWith("=") || display.startsWith("*") || display.startsWith("U") || display.startsWith("/") || display.startsWith(".")){
+        display = "";
+        $(input).val(display);        
+    }else{
+        $(input).val(display);
+    }  
+    
 }

@@ -1,4 +1,5 @@
 # Calculator_Rachoon (Student practice)
 
 - Creating all HTML elements with JS(jQuery)
-- Validating input field (calculator display)
+- Design and styling (Flex,  CSS Variables - Custom Properties)
+- Validating input field(calculator display)

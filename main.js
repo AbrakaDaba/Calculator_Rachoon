@@ -28,7 +28,9 @@ for (i = 0; i < s; i++) {
             "height": "93px",
             "position": "absolute",
             "background": "linear-gradient(rgb(255, 145, 26) 0%, rgb(251, 175, 93) 45%, rgb(241, 130, 0) 55%, rgb(214, 109, 0) 100%)",
-            "line-height": "92px"
+            "line-height": "92px",
+         "right": "19px",
+         "bottom": "24px",
         });
     };
     if (numKey.innerText == "0") {

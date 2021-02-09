@@ -109,6 +109,7 @@ input{
     font-size: 28px;
     min-height: 42px;
     line-height: 42px;
+    padding-bottom:2px;
 }
 
 
@@ -135,6 +136,7 @@ span{
     -moz-border-radius: 5px;
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
+    padding-bottom:2px;
 }
  
 span:active{
